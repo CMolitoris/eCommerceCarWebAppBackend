@@ -36,7 +36,7 @@ namespace eCommerceStarterCode.Controllers
             return Ok(custOrders);
         }
         
-        [HttpGet, Authorize]
+        [HttpPost, Authorize]
         public IActionResult makeOrder([FromBody]Order value)
         {
             _context.Orders.Add(value);
