@@ -17,13 +17,19 @@ namespace eCommerceStarterCode.Data
         public DbSet<Car> Cars { get; set; }
         public DbSet<Order> Orders { get; set; }
         public DbSet<ShoppingCart> ShoppingCarts { get; set; }
-        
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
+            modelBuilder.Entity<Car>()
+                .HasData(
+                new Car { Id = 1, Price = 24000, Make = "Ford", Model = "Fusion", Description = "Entry level sedan", Mileage = 25000, AverageRating = 3.5 }
+                );
 
             modelBuilder.ApplyConfiguration(new RolesConfiguration());
+
+
+
         }
 
     }

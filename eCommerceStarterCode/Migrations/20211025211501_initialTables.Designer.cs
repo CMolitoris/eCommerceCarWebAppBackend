@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using eCommerceStarterCode.Data;
 
 namespace eCommerceStarterCode.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20211025211501_initialTables")]
+    partial class initialTables
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -48,25 +50,15 @@ namespace eCommerceStarterCode.Migrations
                     b.HasData(
                         new
                         {
-<<<<<<< HEAD
-                            Id = "ca33a4e9-c4ff-40ca-902b-bb32723154fe",
-                            ConcurrencyStamp = "59541882-b92d-4c68-a289-270c5200469e",
-=======
-                            Id = "fd18e502-e42d-45a1-8cd9-ca4e8f2e4dbc",
-                            ConcurrencyStamp = "2af3c619-7be5-4eb2-b713-a76d401f82c6",
->>>>>>> 1ee41cb0d5758fd3645b631bfbee58efbf09ca68
+                            Id = "697f089f-9197-4cb1-9155-de81b28102de",
+                            ConcurrencyStamp = "6efdb1f0-95b6-4b22-8c17-2c6c06f07596",
                             Name = "User",
                             NormalizedName = "USER"
                         },
                         new
                         {
-<<<<<<< HEAD
-                            Id = "6ef258eb-3d0d-4cb9-b32c-608b1972985c",
-                            ConcurrencyStamp = "0c8c1700-c5f7-47c6-9474-570bc9204906",
-=======
-                            Id = "84d1ef10-058c-447f-bd68-f3a5bf91913c",
-                            ConcurrencyStamp = "fbc750ac-5309-4896-963e-588feb663b5b",
->>>>>>> 1ee41cb0d5758fd3645b631bfbee58efbf09ca68
+                            Id = "82e03552-5347-4a4e-a802-282487e31465",
+                            ConcurrencyStamp = "ea85bed8-f14d-433f-87a7-f5939adff3d2",
                             Name = "Admin",
                             NormalizedName = "ADMIN"
                         });
@@ -204,21 +196,6 @@ namespace eCommerceStarterCode.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Cars");
-<<<<<<< HEAD
-=======
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            AverageRating = 3.5,
-                            Description = "Entry level sedan",
-                            Make = "Ford",
-                            Mileage = 25000,
-                            Model = "Fusion",
-                            Price = 24000.0
-                        });
->>>>>>> 1ee41cb0d5758fd3645b631bfbee58efbf09ca68
                 });
 
             modelBuilder.Entity("eCommerceStarterCode.Models.Order", b =>
