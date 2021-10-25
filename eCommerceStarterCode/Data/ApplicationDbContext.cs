@@ -21,8 +21,15 @@ namespace eCommerceStarterCode.Data
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
+            modelBuilder.Entity<Car>()
+                .HasData(
+                new Car { Price = 24000, Make = "Ford", Model = "Fusion", Description = "Entry level sedan", Mileage = 25000, AverageRating = 3.5 }
+                );
 
             modelBuilder.ApplyConfiguration(new RolesConfiguration());
+
+
+
         }
 
     }
