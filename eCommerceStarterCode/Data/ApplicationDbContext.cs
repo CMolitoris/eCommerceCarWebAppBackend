@@ -13,6 +13,8 @@ namespace eCommerceStarterCode.Data
 
         }
 
+        public DbSet<Rating> Ratings { get; set; }
+
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
