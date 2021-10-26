@@ -18,6 +18,7 @@ namespace eCommerceStarterCode.Models
         public Car Car { get; set; }
 
         //Not primary key
+        [Key]
         public int Quantity { get; set; }
     }
 }

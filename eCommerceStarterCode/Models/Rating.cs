@@ -7,8 +7,8 @@ namespace eCommerceStarterCode.Models
     {
         [Key]
         public int Id { get; set; }
-        public int RatingScore { get; set; }
-
+        public double RatingScore { get; set; }
+        public string Message { get; set; }
 
         [ForeignKey("Car")]
         public int CarId { get; set; }
