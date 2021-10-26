@@ -24,7 +24,7 @@ namespace eCommerceStarterCode.Controllers
         }
 
         //Get all ratings
-        [HttpGet("all"),Authorize]
+        [HttpGet("all/")]
         public IActionResult GetAllRatings()
         {
             var ratings = _context.Ratings;
@@ -32,10 +32,10 @@ namespace eCommerceStarterCode.Controllers
         }
 
         //Get ratings for car
-        [HttpGet("{carId}"), Authorize]
-        public IActionResult GetCarRatings([FromBody]int carId)
+        [HttpGet("{carId}")]
+        public IActionResult GetCarRatings(int carId)
         {
-            var ratings = _context.Ratings.Where(r => r.CarId == carId);
+            var ratings = _context.Ratings.Where(r => r.CarId == carId).ToList();
             return Ok(ratings);
         }
 
