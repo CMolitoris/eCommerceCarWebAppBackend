@@ -6,7 +6,7 @@ namespace eCommerceStarterCode.Models
     public class Rating
     {
         [Key]
-        public int RatingId { get; set; }
+        public int Id { get; set; }
         public int RatingScore { get; set; }
 
 

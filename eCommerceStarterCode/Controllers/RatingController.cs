@@ -13,7 +13,7 @@ using System.Threading.Tasks;
 namespace eCommerceStarterCode.Controllers
 {
 
-    [Route("api/rating")]
+    [Route("api/rating/")]
     [ApiController]
     public class RatingController: ControllerBase
     {
@@ -23,8 +23,16 @@ namespace eCommerceStarterCode.Controllers
             _context = context;
         }
 
+        //Get all ratings
+        [HttpGet("all"),Authorize]
+        public IActionResult GetAllRatings()
+        {
+            var ratings = _context.Ratings;
+            return Ok(ratings);
+        }
+
         //Get ratings for car
-        [HttpGet("Rating"), Authorize]
+        [HttpGet("{carId}"), Authorize]
         public IActionResult GetCarRatings([FromBody]int carId)
         {
             var ratings = _context.Ratings.Where(r => r.CarId == carId);
@@ -32,7 +40,7 @@ namespace eCommerceStarterCode.Controllers
         }
 
         //POST Rating
-        [HttpPost, Authorize]
+        [HttpPost]
         public IActionResult Post([FromBody]Rating rating)
         {
             _context.Ratings.Add(rating);
