@@ -46,5 +46,26 @@ namespace eCommerceStarterCode.Controllers
             return StatusCode(201, value);
         }
 
+        // Put api/order/edit/{orderId}
+        [HttpPut("edit/{orderId}"), Authorize]
+        public IActionResult updateOrder(int orderId, [FromBody]Order value)
+        {
+            var order = _context.Orders.Where(o => o.Id == orderId).SingleOrDefault();
+            if (order == null)
+            {
+                return NotFound("Requested order not found");
+            }
+            order.Id = value.Id;
+            order.Total = value.Total;
+            order.ShippingCost = value.ShippingCost;
+            order.Shipped = value.Shipped;
+            order.ShippingNumber = value.ShippingNumber;
+            order.Delivered = value.Delivered;
+            order.UserId = value.UserId;
+
+            _context.Orders.Update(order);
+            _context.SaveChanges();
+            return StatusCode(201, order);
+        }
     }
 }
