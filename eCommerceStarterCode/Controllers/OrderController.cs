@@ -8,7 +8,7 @@ using eCommerceStarterCode.Models;
 
 namespace eCommerceStarterCode.Controllers
 {
-    [Route("api/order")]
+    [Route("api/order/")]
     [ApiController]
 
     public class OrderController : ControllerBase
@@ -20,7 +20,7 @@ namespace eCommerceStarterCode.Controllers
             _context = context;
         }
 
-        // GET api/order
+        // GET api/order/
         [HttpGet, Authorize]
         public IActionResult Get()
         {
@@ -29,14 +29,16 @@ namespace eCommerceStarterCode.Controllers
             return Ok(orders);
         }
 
-        [HttpGet, Authorize]
-        public IActionResult GetIdOrders([FromBody]string userId)
+        // GET api/order/{userId}
+        [HttpGet("{userId}"), Authorize]
+        public IActionResult GetIdOrders(string userId)
         {
             var custOrders = _context.Orders.Where(co => co.UserId == userId).ToList();
             return Ok(custOrders);
         }
         
-        [HttpPost, Authorize]
+        // POST api/order/new
+        [HttpPost("new"), Authorize]
         public IActionResult makeOrder([FromBody]Order value)
         {
             _context.Orders.Add(value);
