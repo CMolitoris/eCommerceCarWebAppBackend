@@ -35,18 +35,5 @@ namespace eCommerceStarterCode.Controllers
             return StatusCode(201, newCar);
         }
 
-        //<baseurl>/api/Car/id
-        [HttpGet("Id")]
-        [AllowAnonymous]
-        public IActionResult GetSelectedCar()
-        {
-            var carID = Car.Find("Id");
-            var car = _context.Cars.Find(Id);
-            if(car == null)
-            {
-                return NotFound();
-            }
-            return Ok(car);
-        }
     }
 }
