@@ -29,7 +29,7 @@ namespace eCommerceStarterCode.Controllers
             return Ok(cars);
         }
 
-        // POST api/car/Post
+        // POST api/car/
         [HttpPost]
         public IActionResult PostCar([FromBody]Car newCar)
         {
@@ -39,7 +39,7 @@ namespace eCommerceStarterCode.Controllers
         }
 
         // GET api/car/{carId}
-        [HttpGet("{carId}"), Authorize]
+        [HttpGet("{carId}")]
         public IActionResult GetIdOrders(int carId)
         {
             var selectedCar = _context.Cars.Where(c => c.Id == carId).ToList();
@@ -47,7 +47,7 @@ namespace eCommerceStarterCode.Controllers
         }
 
         // PUT api/car/edit/{carId}
-        [HttpPut("edit/{carId}"), Authorize]
+        [HttpPut("edit/{carId}")]
         public IActionResult UpdateCar(int carId, [FromBody] Car value)
         {
             var car = _context.Cars.Where(o => o.Id == carId).SingleOrDefault();
@@ -55,7 +55,6 @@ namespace eCommerceStarterCode.Controllers
             {
                 return NotFound("Requested order not found");
             }
-            car.Id = value.Id;
             car.Price = value.Price;
             car.Make = value.Make;
             car.Model = value.Model;
@@ -71,12 +70,13 @@ namespace eCommerceStarterCode.Controllers
         }
 
         // DELETE api/car/delete/{carID}
-        [HttpDelete("delete/{carId}"), Authorize]
-        public IActionResult DeleteCar(int carId, [FromBody] Car value)
-        {
-            _context.Cars.Remove(value);
+        [HttpDelete("delete/{carId}")]
+        public IActionResult DeleteCar(int carId)
+        {   
+            Car car = _context.Cars.Where(c => c.Id == carId).SingleOrDefault();
+            _context.Cars.Remove(car);
             _context.SaveChanges();
-            return Ok(value);
+            return Ok(car);
         }
 
     }
