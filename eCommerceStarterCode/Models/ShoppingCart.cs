@@ -9,6 +9,7 @@ namespace eCommerceStarterCode.Models
 {
     public class ShoppingCart
     {
+        
         [ForeignKey("User")]
         public string UserId { get; set; }
         public User User { get; set; }
@@ -17,7 +18,7 @@ namespace eCommerceStarterCode.Models
         public int CarId { get; set; }
         public Car Car { get; set; }
 
-        //Not primary key
+        [Key]
         public int Quantity { get; set; }
     }
 }
