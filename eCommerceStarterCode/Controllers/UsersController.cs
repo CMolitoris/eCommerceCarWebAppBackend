@@ -19,12 +19,22 @@ namespace eCommerceStarterCode.Controllers
         {
             _context = context;
         }
+
         //Left out Authorize
         [HttpGet("user")]
         public IActionResult GetAllUsers()
         {
             var users = _context.Users;
             return Ok(users);
+        }
+
+        //Get current user
+        [HttpGet, Authorize]
+        public IActionResult GetCurrentUser()
+        {
+            var username = User.FindFirstValue(ClaimTypes.Name);
+            var currentUser = _context.Users.Where(u => u.UserName == username).SingleOrDefault();
+            return Ok(username); 
         }
     }
 }

@@ -29,16 +29,16 @@ namespace eCommerceStarterCode.Controllers
             return Ok(orders);
         }
 
-        // GET api/order/{userId}
-        [HttpGet("{userId}"), Authorize]
-        public IActionResult GetIdOrders(string userId)
+        // GET api/order/{orderId}
+        [HttpGet("{orderId}"), Authorize]
+        public IActionResult GetIdOrders(int orderId)
         {
-            var custOrders = _context.Orders.Where(co => co.UserId == userId).ToList();
+            var custOrders = _context.Orders.Where(co => co.Id == orderId).ToList();
             return Ok(custOrders);
         }
         
         // POST api/order/new
-        [HttpPost("new"), Authorize]
+        [HttpPost("new")]
         public IActionResult makeOrder([FromBody]Order value)
         {
             _context.Orders.Add(value);
