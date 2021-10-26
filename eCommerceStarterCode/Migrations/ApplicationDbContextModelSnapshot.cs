@@ -48,15 +48,15 @@ namespace eCommerceStarterCode.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "8a02c746-f242-4666-9f28-833fe2c116d8",
-                            ConcurrencyStamp = "206a021b-62c5-4e66-a7ac-bb364022daf3",
+                            Id = "0a7eb6b4-ec10-4590-bce0-cbc7133c2087",
+                            ConcurrencyStamp = "eb641bf2-b350-4bc4-a347-52653fe18e57",
                             Name = "User",
                             NormalizedName = "USER"
                         },
                         new
                         {
-                            Id = "770cf931-bfb7-4247-a54e-45bf3ef7e87e",
-                            ConcurrencyStamp = "c730e78a-42e2-40cd-aa5a-ee69616e887d",
+                            Id = "bc94bb54-0bc8-4d8a-ad8e-f16493d2c0d0",
+                            ConcurrencyStamp = "ccb4c025-9f9d-4c02-bd89-71bb26327eba",
                             Name = "Admin",
                             NormalizedName = "ADMIN"
                         });
@@ -294,22 +294,18 @@ namespace eCommerceStarterCode.Migrations
 
             modelBuilder.Entity("eCommerceStarterCode.Models.ShoppingCart", b =>
                 {
-                    b.Property<int>("Quantity")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                    b.Property<string>("UserId")
+                        .HasColumnType("nvarchar(450)");
 
                     b.Property<int>("CarId")
                         .HasColumnType("int");
 
-                    b.Property<string>("UserId")
-                        .HasColumnType("nvarchar(450)");
+                    b.Property<int>("Quantity")
+                        .HasColumnType("int");
 
-                    b.HasKey("Quantity");
+                    b.HasKey("UserId", "CarId");
 
                     b.HasIndex("CarId");
-
-                    b.HasIndex("UserId");
 
                     b.ToTable("ShoppingCarts");
                 });
@@ -475,7 +471,9 @@ namespace eCommerceStarterCode.Migrations
 
                     b.HasOne("eCommerceStarterCode.Models.User", "User")
                         .WithMany()
-                        .HasForeignKey("UserId");
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.Navigation("Car");
 

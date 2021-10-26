@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace eCommerceStarterCode.Migrations
 {
-    public partial class MakeCars : Migration
+    public partial class ShoppingCartJunction : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -60,6 +60,8 @@ namespace eCommerceStarterCode.Migrations
                     Price = table.Column<double>(type: "float", nullable: false),
                     Make = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Model = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Year = table.Column<int>(type: "int", nullable: false),
+                    Type = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Description = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Mileage = table.Column<int>(type: "int", nullable: false),
                     AverageRating = table.Column<double>(type: "float", nullable: false)
@@ -203,14 +205,15 @@ namespace eCommerceStarterCode.Migrations
                 name: "Ratings",
                 columns: table => new
                 {
-                    RatingId = table.Column<int>(type: "int", nullable: false)
+                    Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    RatingScore = table.Column<int>(type: "int", nullable: false),
+                    RatingScore = table.Column<double>(type: "float", nullable: false),
+                    Message = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     CarId = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Ratings", x => x.RatingId);
+                    table.PrimaryKey("PK_Ratings", x => x.Id);
                     table.ForeignKey(
                         name: "FK_Ratings_Cars_CarId",
                         column: x => x.CarId,
@@ -223,20 +226,19 @@ namespace eCommerceStarterCode.Migrations
                 name: "ShoppingCarts",
                 columns: table => new
                 {
+                    UserId = table.Column<string>(type: "nvarchar(450)", nullable: false),
+                    CarId = table.Column<int>(type: "int", nullable: false),
                     Quantity = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    UserId = table.Column<string>(type: "nvarchar(450)", nullable: true),
-                    CarId = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_ShoppingCarts", x => x.Quantity);
+                    table.PrimaryKey("PK_ShoppingCarts", x => new { x.UserId, x.CarId });
                     table.ForeignKey(
                         name: "FK_ShoppingCarts_AspNetUsers_UserId",
                         column: x => x.UserId,
                         principalTable: "AspNetUsers",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
                         name: "FK_ShoppingCarts_Cars_CarId",
                         column: x => x.CarId,
@@ -250,18 +252,18 @@ namespace eCommerceStarterCode.Migrations
                 columns: new[] { "Id", "ConcurrencyStamp", "Name", "NormalizedName" },
                 values: new object[,]
                 {
-                    { "3ac8d5a9-35b5-4030-93c9-4bb84874a6e8", "7d20383d-3ea4-4bb9-8b9b-95405434e433", "User", "USER" },
-                    { "a82b38cf-b710-49bd-a166-4c906e5c22ff", "26e9b6a0-7d7f-4544-9d39-525b07123a5d", "Admin", "ADMIN" }
+                    { "0a7eb6b4-ec10-4590-bce0-cbc7133c2087", "eb641bf2-b350-4bc4-a347-52653fe18e57", "User", "USER" },
+                    { "bc94bb54-0bc8-4d8a-ad8e-f16493d2c0d0", "ccb4c025-9f9d-4c02-bd89-71bb26327eba", "Admin", "ADMIN" }
                 });
 
             migrationBuilder.InsertData(
                 table: "Cars",
-                columns: new[] { "Id", "AverageRating", "Description", "Make", "Mileage", "Model", "Price" },
+                columns: new[] { "Id", "AverageRating", "Description", "Make", "Mileage", "Model", "Price", "Type", "Year" },
                 values: new object[,]
                 {
-                    { 1, 3.5, "Entry level sedan", "Ford", 25000, "Fusion", 24000.0 },
-                    { 2, 3.7000000000000002, "Used 2015 Dodge Durango", "Dodge", 95000, "Durango", 20000.0 },
-                    { 3, 4.2000000000000002, "Used Chevy Tahoe SUV", "Chevrolet", 40000, "Tahoe", 45000.0 }
+                    { 1, 3.5, "Entry level sedan", "Ford", 25000, "Fusion", 24000.0, null, 0 },
+                    { 2, 3.7000000000000002, "Used 2015 Dodge Durango", "Dodge", 95000, "Durango", 20000.0, null, 0 },
+                    { 3, 4.2000000000000002, "Used Chevy Tahoe SUV", "Chevrolet", 40000, "Tahoe", 45000.0, null, 0 }
                 });
 
             migrationBuilder.CreateIndex(
@@ -317,11 +319,6 @@ namespace eCommerceStarterCode.Migrations
                 name: "IX_ShoppingCarts_CarId",
                 table: "ShoppingCarts",
                 column: "CarId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_ShoppingCarts_UserId",
-                table: "ShoppingCarts",
-                column: "UserId");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
