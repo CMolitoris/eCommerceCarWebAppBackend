@@ -24,7 +24,7 @@ namespace eCommerceStarterCode.Controllers
         [HttpGet, Authorize]
         public IActionResult Get()
         {
-            // Retrieve all movies from db logic
+            // Retrieve all orders from db logic
             var orders = _context.Orders;
             return Ok(orders);
         }
