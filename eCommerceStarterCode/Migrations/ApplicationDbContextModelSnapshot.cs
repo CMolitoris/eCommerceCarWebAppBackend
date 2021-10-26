@@ -48,25 +48,15 @@ namespace eCommerceStarterCode.Migrations
                     b.HasData(
                         new
                         {
-<<<<<<< HEAD
-                            Id = "ca33a4e9-c4ff-40ca-902b-bb32723154fe",
-                            ConcurrencyStamp = "59541882-b92d-4c68-a289-270c5200469e",
-=======
-                            Id = "fd18e502-e42d-45a1-8cd9-ca4e8f2e4dbc",
-                            ConcurrencyStamp = "2af3c619-7be5-4eb2-b713-a76d401f82c6",
->>>>>>> 1ee41cb0d5758fd3645b631bfbee58efbf09ca68
+                            Id = "17e1eb43-1247-40a6-8a91-0cab64ab0594",
+                            ConcurrencyStamp = "361d4642-2e45-4c3a-b859-6768b6853b05",
                             Name = "User",
                             NormalizedName = "USER"
                         },
                         new
                         {
-<<<<<<< HEAD
-                            Id = "6ef258eb-3d0d-4cb9-b32c-608b1972985c",
-                            ConcurrencyStamp = "0c8c1700-c5f7-47c6-9474-570bc9204906",
-=======
-                            Id = "84d1ef10-058c-447f-bd68-f3a5bf91913c",
-                            ConcurrencyStamp = "fbc750ac-5309-4896-963e-588feb663b5b",
->>>>>>> 1ee41cb0d5758fd3645b631bfbee58efbf09ca68
+                            Id = "61ca2629-1102-4696-a63d-c80c5820a6cf",
+                            ConcurrencyStamp = "b01fbd06-72f9-40c4-9ca8-4f26b263e3b7",
                             Name = "Admin",
                             NormalizedName = "ADMIN"
                         });
@@ -204,8 +194,6 @@ namespace eCommerceStarterCode.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Cars");
-<<<<<<< HEAD
-=======
 
                     b.HasData(
                         new
@@ -217,8 +205,27 @@ namespace eCommerceStarterCode.Migrations
                             Mileage = 25000,
                             Model = "Fusion",
                             Price = 24000.0
+                        },
+                        new
+                        {
+                            Id = 2,
+                            AverageRating = 3.7000000000000002,
+                            Description = "Used 2015 Dodge Durango",
+                            Make = "Dodge",
+                            Mileage = 95000,
+                            Model = "Durango",
+                            Price = 20000.0
+                        },
+                        new
+                        {
+                            Id = 3,
+                            AverageRating = 4.2000000000000002,
+                            Description = "Used Chevy Tahoe SUV",
+                            Make = "Chevrolet",
+                            Mileage = 40000,
+                            Model = "Tahoe",
+                            Price = 45000.0
                         });
->>>>>>> 1ee41cb0d5758fd3645b631bfbee58efbf09ca68
                 });
 
             modelBuilder.Entity("eCommerceStarterCode.Models.Order", b =>
