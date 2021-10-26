@@ -18,10 +18,6 @@ namespace eCommerceStarterCode.Models
         public int CarId { get; set; }
         public Car Car { get; set; }
 
-<<<<<<< HEAD
-        //Not primary key
-=======
->>>>>>> f557e2f8403cbc1c864069ca8b56751a9c9a0d30
         [Key]
         public int Quantity { get; set; }
     }
