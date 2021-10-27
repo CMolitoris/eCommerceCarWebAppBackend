@@ -23,7 +23,7 @@ namespace eCommerceStarterCode.Controllers
 
         //Get all ratings
         [HttpGet("all/")]
-        public IActionResult GetAllRatings()
+        public IActionResult GetAllCarts()
         {
             var shoppingCarts = _context.ShoppingCarts;
             return Ok(shoppingCarts);
@@ -31,7 +31,7 @@ namespace eCommerceStarterCode.Controllers
 
         //Get ratings for car
         [HttpGet("{userId}")]
-        public IActionResult GetCarRatings(string userId)
+        public IActionResult GetUserCart(string userId)
         {
             var ratings = _context.ShoppingCarts.Where(r => r.UserId==userId).ToList();
             return Ok(ratings);

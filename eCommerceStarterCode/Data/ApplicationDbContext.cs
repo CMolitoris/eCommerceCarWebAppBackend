@@ -28,7 +28,9 @@ namespace eCommerceStarterCode.Data
                 new Car { Id = 3, Price = 45000, Make = "Chevrolet", Model = "Tahoe", Description = "Used Chevy Tahoe SUV", Mileage = 40000, AverageRating = 4.2 }
                 );
             modelBuilder.Entity<ShoppingCart>()
-                .HasKey(c => new { c.UserId, c.CarId});
+                .HasKey(c => new { c.UserId, c.CarId });
+            
+            
 
             modelBuilder.ApplyConfiguration(new RolesConfiguration());
 
