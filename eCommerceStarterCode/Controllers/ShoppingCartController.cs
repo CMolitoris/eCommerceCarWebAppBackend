@@ -45,5 +45,14 @@ namespace eCommerceStarterCode.Controllers
             _context.SaveChanges();
             return StatusCode(201, shoppingCart);
         }
+
+        [HttpDelete("{userId}/{carId}")]
+        public IActionResult DeleteCart(string userId,int carId)
+        {
+            var cartToDelete = _context.ShoppingCarts.Where(ctd => ctd.UserId == userId && ctd.CarId == carId).SingleOrDefault();
+            _context.Remove(cartToDelete);
+            _context.SaveChanges();
+            return Ok(cartToDelete);
+        }
     }
 }
