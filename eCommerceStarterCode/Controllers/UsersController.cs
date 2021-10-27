@@ -30,12 +30,15 @@ namespace eCommerceStarterCode.Controllers
         }
 
         //Get current user
-        [HttpGet, Authorize]
-        public IActionResult GetCurrentUser()
+        [HttpGet("{userId}"), Authorize]
+        public IActionResult GetCurrentUser(string userId)
         {
-            var username = User.FindFirstValue(ClaimTypes.Name);
-            var currentUser = _context.Users.Where(u => u.UserName == username).SingleOrDefault();
-            return Ok(username); 
+            var currentUser = _context.Users.Where(u => u.Id == userId).SingleOrDefault();
+            if (currentUser == null)
+            {
+                return NotFound();
+            }
+            return Ok(currentUser); 
         }
 
         [HttpPut("complete/{userId}")]
