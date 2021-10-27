@@ -1,4 +1,5 @@
 ﻿using eCommerceStarterCode.Data;
+using eCommerceStarterCode.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -10,7 +11,7 @@ using System.Threading.Tasks;
 
 namespace eCommerceStarterCode.Controllers
 {
-    [Route("api/users")]
+    [Route("api/users/")]
     [ApiController]
     public class UsersController : ControllerBase
     {
@@ -36,5 +37,38 @@ namespace eCommerceStarterCode.Controllers
             var currentUser = _context.Users.Where(u => u.UserName == username).SingleOrDefault();
             return Ok(username); 
         }
+
+        [HttpPut("complete/{userId}")]
+        public IActionResult CompleteUserDetails(string userId, [FromBody] User userDetails)
+        {
+            var user = _context.Users.Where(u => u.Id == userId).SingleOrDefault();
+            user.StreetAddress = userDetails.StreetAddress;
+            user.City = userDetails.City;
+            user.State = userDetails.State;
+
+            _context.Users.Update(user);
+            _context.SaveChanges();
+            return StatusCode(201, user);
+        }
+
+        [HttpPut("edit/{userId}")]
+        public IActionResult EditUserDetails(string userId, [FromBody] User userDetails)
+        {
+            var user = _context.Users.Where(u => u.Id == userId).SingleOrDefault();
+
+            user.UserName = userDetails.UserName;
+            user.FirstName = userDetails.UserName;
+            user.LastName = userDetails.LastName;
+            user.StreetAddress = userDetails.StreetAddress;
+            user.City = userDetails.City;
+            user.State = userDetails.State;
+            
+
+            _context.Users.Update(user);
+            _context.SaveChanges();
+            return StatusCode(201, user);
+        }
+
+
     }
 }
