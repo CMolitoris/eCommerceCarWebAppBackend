@@ -17,6 +17,7 @@ namespace eCommerceStarterCode.Data
         public DbSet<Car> Cars { get; set; }
         public DbSet<Order> Orders { get; set; }
         public DbSet<ShoppingCart> ShoppingCarts { get; set; }
+        public DbSet<SellerConnection> SellerConnections { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -39,8 +40,10 @@ namespace eCommerceStarterCode.Data
                 );
             modelBuilder.Entity<ShoppingCart>()
                 .HasKey(c => new { c.UserId, c.CarId });
-            
-            
+            modelBuilder.Entity<SellerConnection>()
+                .HasKey(c => new { c.UserId, c.CarId });
+
+
 
             modelBuilder.ApplyConfiguration(new RolesConfiguration());
         }
