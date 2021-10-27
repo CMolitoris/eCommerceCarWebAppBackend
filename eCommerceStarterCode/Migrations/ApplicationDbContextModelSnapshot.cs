@@ -48,15 +48,15 @@ namespace eCommerceStarterCode.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "0a7eb6b4-ec10-4590-bce0-cbc7133c2087",
-                            ConcurrencyStamp = "eb641bf2-b350-4bc4-a347-52653fe18e57",
+                            Id = "bff2d13e-b359-447b-b5ca-b25fb9d8cbf2",
+                            ConcurrencyStamp = "4d07b6d8-06a6-4304-be91-01ea47460e87",
                             Name = "User",
                             NormalizedName = "USER"
                         },
                         new
                         {
-                            Id = "bc94bb54-0bc8-4d8a-ad8e-f16493d2c0d0",
-                            ConcurrencyStamp = "ccb4c025-9f9d-4c02-bd89-71bb26327eba",
+                            Id = "a38c6617-1103-462b-8a9c-2bcd3ccd430a",
+                            ConcurrencyStamp = "2ffe3f81-37a2-4aeb-abdc-1da16004dd92",
                             Name = "Admin",
                             NormalizedName = "ADMIN"
                         });
@@ -205,35 +205,158 @@ namespace eCommerceStarterCode.Migrations
                         new
                         {
                             Id = 1,
-                            AverageRating = 3.5,
-                            Description = "Entry level sedan",
-                            Make = "Ford",
-                            Mileage = 25000,
-                            Model = "Fusion",
-                            Price = 24000.0,
-                            Year = 0
+                            AverageRating = 0.0,
+                            Description = "Entry level compact sedan.",
+                            Make = "Hyundai",
+                            Mileage = 0,
+                            Model = "Elantra",
+                            Price = 20000.0,
+                            Type = "Sedan",
+                            Year = 2022
                         },
                         new
                         {
                             Id = 2,
-                            AverageRating = 3.7000000000000002,
-                            Description = "Used 2015 Dodge Durango",
-                            Make = "Dodge",
-                            Mileage = 95000,
-                            Model = "Durango",
-                            Price = 20000.0,
-                            Year = 0
+                            AverageRating = 0.0,
+                            Description = "Entry level mid-size sedan.",
+                            Make = "Toyota",
+                            Mileage = 0,
+                            Model = "Camry",
+                            Price = 26000.0,
+                            Type = "Sedan",
+                            Year = 2022
                         },
                         new
                         {
                             Id = 3,
-                            AverageRating = 4.2000000000000002,
-                            Description = "Used Chevy Tahoe SUV",
+                            AverageRating = 0.0,
+                            Description = "Entry level mid-size luxury sedan.",
+                            Make = "Lexus",
+                            Mileage = 0,
+                            Model = "ES",
+                            Price = 40000.0,
+                            Type = "Sedan",
+                            Year = 2022
+                        },
+                        new
+                        {
+                            Id = 4,
+                            AverageRating = 0.0,
+                            Description = "Entry level compact SUV.",
+                            Make = "Toyota",
+                            Mileage = 0,
+                            Model = "RAV4",
+                            Price = 27000.0,
+                            Type = "SUV",
+                            Year = 2022
+                        },
+                        new
+                        {
+                            Id = 5,
+                            AverageRating = 0.0,
+                            Description = "Entry level mid-size SUV.",
+                            Make = "Kia",
+                            Mileage = 0,
+                            Model = "Sorento",
+                            Price = 30000.0,
+                            Type = "SUV",
+                            Year = 2022
+                        },
+                        new
+                        {
+                            Id = 6,
+                            AverageRating = 0.0,
+                            Description = "Entry level large SUV.",
+                            Make = "Ford",
+                            Mileage = 0,
+                            Model = "Expedition",
+                            Price = 50000.0,
+                            Type = "SUV",
+                            Year = 2022
+                        },
+                        new
+                        {
+                            Id = 7,
+                            AverageRating = 0.0,
+                            Description = "Entry level Minivan.",
+                            Make = "Toyota",
+                            Mileage = 0,
+                            Model = "Sienna",
+                            Price = 35000.0,
+                            Type = "Minivan",
+                            Year = 2022
+                        },
+                        new
+                        {
+                            Id = 8,
+                            AverageRating = 0.0,
+                            Description = "Entry level Minivan.",
+                            Make = "Honda",
+                            Mileage = 0,
+                            Model = "Odyssey",
+                            Price = 33000.0,
+                            Type = "Minivan",
+                            Year = 2022
+                        },
+                        new
+                        {
+                            Id = 9,
+                            AverageRating = 0.0,
+                            Description = "Entry level Minivan.",
+                            Make = "Chrysler",
+                            Mileage = 0,
+                            Model = "Pacifica",
+                            Price = 35000.0,
+                            Type = "Minivan",
+                            Year = 2022
+                        },
+                        new
+                        {
+                            Id = 10,
+                            AverageRating = 0.0,
+                            Description = "Entry level Minivan.",
+                            Make = "Toyota",
+                            Mileage = 0,
+                            Model = "Sienna",
+                            Price = 35000.0,
+                            Type = "Minivan",
+                            Year = 2022
+                        },
+                        new
+                        {
+                            Id = 11,
+                            AverageRating = 0.0,
+                            Description = "Entry level pickup truck.",
+                            Make = "Ford",
+                            Mileage = 0,
+                            Model = "F-150",
+                            Price = 38000.0,
+                            Type = "Truck",
+                            Year = 2022
+                        },
+                        new
+                        {
+                            Id = 12,
+                            AverageRating = 0.0,
+                            Description = "Entry level pickup truck.",
+                            Make = "Ram",
+                            Mileage = 0,
+                            Model = "1500",
+                            Price = 36000.0,
+                            Type = "Truck",
+                            Year = 2022
+                        },
+                        new
+                        {
+                            Id = 13,
+                            AverageRating = 0.0,
+                            Description = "Entry level pickup truck.",
                             Make = "Chevrolet",
-                            Mileage = 40000,
-                            Model = "Tahoe",
-                            Price = 45000.0,
-                            Year = 0
+                            Mileage = 0,
+                            Model = "Silverado 1500",
+                            Price = 36000.0,
+                            Type = "Truck",
+                            Year = 2022
                         });
                 });
 

@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace eCommerceStarterCode.Migrations
 {
-    public partial class ShoppingCartJunction : Migration
+    public partial class CarFleetUpdate : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -252,8 +252,8 @@ namespace eCommerceStarterCode.Migrations
                 columns: new[] { "Id", "ConcurrencyStamp", "Name", "NormalizedName" },
                 values: new object[,]
                 {
-                    { "0a7eb6b4-ec10-4590-bce0-cbc7133c2087", "eb641bf2-b350-4bc4-a347-52653fe18e57", "User", "USER" },
-                    { "bc94bb54-0bc8-4d8a-ad8e-f16493d2c0d0", "ccb4c025-9f9d-4c02-bd89-71bb26327eba", "Admin", "ADMIN" }
+                    { "bff2d13e-b359-447b-b5ca-b25fb9d8cbf2", "4d07b6d8-06a6-4304-be91-01ea47460e87", "User", "USER" },
+                    { "a38c6617-1103-462b-8a9c-2bcd3ccd430a", "2ffe3f81-37a2-4aeb-abdc-1da16004dd92", "Admin", "ADMIN" }
                 });
 
             migrationBuilder.InsertData(
@@ -261,9 +261,19 @@ namespace eCommerceStarterCode.Migrations
                 columns: new[] { "Id", "AverageRating", "Description", "Make", "Mileage", "Model", "Price", "Type", "Year" },
                 values: new object[,]
                 {
-                    { 1, 3.5, "Entry level sedan", "Ford", 25000, "Fusion", 24000.0, null, 0 },
-                    { 2, 3.7000000000000002, "Used 2015 Dodge Durango", "Dodge", 95000, "Durango", 20000.0, null, 0 },
-                    { 3, 4.2000000000000002, "Used Chevy Tahoe SUV", "Chevrolet", 40000, "Tahoe", 45000.0, null, 0 }
+                    { 1, 0.0, "Entry level compact sedan.", "Hyundai", 0, "Elantra", 20000.0, "Sedan", 2022 },
+                    { 2, 0.0, "Entry level mid-size sedan.", "Toyota", 0, "Camry", 26000.0, "Sedan", 2022 },
+                    { 3, 0.0, "Entry level mid-size luxury sedan.", "Lexus", 0, "ES", 40000.0, "Sedan", 2022 },
+                    { 4, 0.0, "Entry level compact SUV.", "Toyota", 0, "RAV4", 27000.0, "SUV", 2022 },
+                    { 5, 0.0, "Entry level mid-size SUV.", "Kia", 0, "Sorento", 30000.0, "SUV", 2022 },
+                    { 6, 0.0, "Entry level large SUV.", "Ford", 0, "Expedition", 50000.0, "SUV", 2022 },
+                    { 7, 0.0, "Entry level Minivan.", "Toyota", 0, "Sienna", 35000.0, "Minivan", 2022 },
+                    { 8, 0.0, "Entry level Minivan.", "Honda", 0, "Odyssey", 33000.0, "Minivan", 2022 },
+                    { 9, 0.0, "Entry level Minivan.", "Chrysler", 0, "Pacifica", 35000.0, "Minivan", 2022 },
+                    { 10, 0.0, "Entry level Minivan.", "Toyota", 0, "Sienna", 35000.0, "Minivan", 2022 },
+                    { 11, 0.0, "Entry level pickup truck.", "Ford", 0, "F-150", 38000.0, "Truck", 2022 },
+                    { 12, 0.0, "Entry level pickup truck.", "Ram", 0, "1500", 36000.0, "Truck", 2022 },
+                    { 13, 0.0, "Entry level pickup truck.", "Chevrolet", 0, "Silverado 1500", 36000.0, "Truck", 2022 }
                 });
 
             migrationBuilder.CreateIndex(
