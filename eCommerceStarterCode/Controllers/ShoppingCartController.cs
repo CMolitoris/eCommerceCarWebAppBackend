@@ -3,6 +3,7 @@ using eCommerceStarterCode.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -34,6 +35,18 @@ namespace eCommerceStarterCode.Controllers
         public IActionResult GetUserCart(string userId)
         {
             var ratings = _context.ShoppingCarts.Where(r => r.UserId==userId).ToList();
+            return Ok(ratings);
+        }
+
+        //Get ratings for car
+        [HttpGet("details/{userId}")]
+        public IActionResult GetUserCartDetails(string userId)
+        {
+            var ratings = _context.ShoppingCarts
+                .Where(r => r.UserId == userId)
+                .Include(r => r.Car)
+                .Select(r => new {r.Quantity, r.Car.Model, r.Car.Make, r.Car.Price, ExtendedPrice = r.Quantity * r.Car.Price})
+                .ToList();
             return Ok(ratings);
         }
 
