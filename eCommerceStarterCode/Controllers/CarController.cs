@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 
 namespace eCommerceStarterCode.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("api/car")]
     [ApiController]
     public class CarController : ControllerBase
     {
@@ -44,6 +44,13 @@ namespace eCommerceStarterCode.Controllers
         {
             var selectedCar = _context.Cars.Where(c => c.Id == carId).ToList();
             return Ok(selectedCar);
+        }
+
+        [HttpGet("cars/last")]
+        public IActionResult GetLastCar()
+        {
+            var lastCar = _context.Cars.OrderBy(nc => nc.Id).LastOrDefault();
+            return Ok(lastCar);
         }
 
         // PUT api/car/edit/{carId}
