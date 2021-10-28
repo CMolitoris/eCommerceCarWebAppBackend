@@ -54,6 +54,16 @@ namespace eCommerceStarterCode.Controllers
         [HttpPost]
         public IActionResult Post([FromBody] ShoppingCart shoppingCart)
         {
+            var quantity = _context.ShoppingCarts.Where(q => q.CarId == shoppingCart.CarId).Select(q => q.Quantity).FirstOrDefault();
+            
+            if (quantity > 0)
+            {
+               var currentCart = _context.ShoppingCarts.Where(q => q.CarId == shoppingCart.CarId).FirstOrDefault();
+                currentCart.Quantity++;
+                _context.SaveChanges();
+                return Ok(currentCart);
+            }
+
             _context.ShoppingCarts.Add(shoppingCart);
             _context.SaveChanges();
             return StatusCode(201, shoppingCart);
