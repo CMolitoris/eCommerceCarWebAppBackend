@@ -49,7 +49,7 @@ namespace eCommerceStarterCode.Controllers
         [HttpGet("cars/last")]
         public IActionResult GetLastCar()
         {
-            var lastCar = _context.Cars.OrderBy(nc => nc.Id).LastOrDefault();
+            var lastCar = _context.Cars.OrderBy(lc => lc.Id).Select(lc => lc.Id).LastOrDefault();
             return Ok(lastCar);
         }
 
