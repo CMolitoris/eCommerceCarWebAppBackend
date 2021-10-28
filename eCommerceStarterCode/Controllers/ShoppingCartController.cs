@@ -45,7 +45,7 @@ namespace eCommerceStarterCode.Controllers
             var ratings = _context.ShoppingCarts
                 .Where(r => r.UserId == userId)
                 .Include(r => r.Car)
-                .Select(r => new {r.Quantity, r.Car.Model, r.Car.Make, r.Car.Price, ExtendedPrice = r.Quantity * r.Car.Price})
+                .Select(r => new {r.CarId, r.Quantity, r.Car.Model, r.Car.Make, r.Car.Price, ExtendedPrice = r.Quantity * r.Car.Price})
                 .ToList();
             return Ok(ratings);
         }
