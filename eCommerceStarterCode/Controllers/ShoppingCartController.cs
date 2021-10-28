@@ -73,6 +73,13 @@ namespace eCommerceStarterCode.Controllers
         public IActionResult DeleteCart(string userId,int carId)
         {
             var cartToDelete = _context.ShoppingCarts.Where(ctd => ctd.UserId == userId && ctd.CarId == carId).SingleOrDefault();
+            if (cartToDelete.Quantity > 1)
+            {
+                cartToDelete.Quantity--;
+                _context.SaveChanges();
+                return Ok(cartToDelete);
+            }
+
             _context.Remove(cartToDelete);
             _context.SaveChanges();
             return Ok(cartToDelete);
