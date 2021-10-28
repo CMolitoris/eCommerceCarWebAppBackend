@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 
 namespace eCommerceStarterCode.Controllers
 {
-    [Route("api/car")]
+    [Route("api/car/")]
     [ApiController]
     public class CarController : ControllerBase
     {
@@ -69,7 +69,7 @@ namespace eCommerceStarterCode.Controllers
             car.Type = value.Type;
             car.Description = value.Description;
             car.Mileage = value.Mileage;
-            car.AverageRating = value.AverageRating;
+           
 
             _context.Cars.Update(car);
             _context.SaveChanges();
