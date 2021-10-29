@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using eCommerceStarterCode.Data;
 
 namespace eCommerceStarterCode.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20211028192210_SellerPhoto")]
+    partial class SellerPhoto
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -48,15 +50,15 @@ namespace eCommerceStarterCode.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "2a3578de-1791-4838-85bf-b99a3b064846",
-                            ConcurrencyStamp = "b0fa20ce-f2f6-4f7b-8d97-b60e22e34a50",
+                            Id = "65fe841f-3409-4289-813b-136181acf78a",
+                            ConcurrencyStamp = "9b52c94f-51f9-48df-bc77-0d9493ee0115",
                             Name = "User",
                             NormalizedName = "USER"
                         },
                         new
                         {
-                            Id = "352f16a2-7c6d-43a1-b0c6-41dc07656adb",
-                            ConcurrencyStamp = "057ca5af-58c2-4784-bffd-99add05b6666",
+                            Id = "f27a5f26-7bc7-444a-a793-3ef262f9b97c",
+                            ConcurrencyStamp = "73f3d483-259c-4550-ac40-82b787881220",
                             Name = "Admin",
                             NormalizedName = "ADMIN"
                         });
@@ -417,26 +419,6 @@ namespace eCommerceStarterCode.Migrations
                     b.ToTable("SellerConnections");
                 });
 
-            modelBuilder.Entity("eCommerceStarterCode.Models.SellerPhoto", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<int>("CarId")
-                        .HasColumnType("int");
-
-                    b.Property<string>("ImageResponseData")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("CarId");
-
-                    b.ToTable("SellerPhotos");
-                });
-
             modelBuilder.Entity("eCommerceStarterCode.Models.ShoppingCart", b =>
                 {
                     b.Property<string>("UserId")
@@ -623,17 +605,6 @@ namespace eCommerceStarterCode.Migrations
                     b.Navigation("Car");
 
                     b.Navigation("User");
-                });
-
-            modelBuilder.Entity("eCommerceStarterCode.Models.SellerPhoto", b =>
-                {
-                    b.HasOne("eCommerceStarterCode.Models.Car", "Car")
-                        .WithMany()
-                        .HasForeignKey("CarId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Car");
                 });
 
             modelBuilder.Entity("eCommerceStarterCode.Models.ShoppingCart", b =>

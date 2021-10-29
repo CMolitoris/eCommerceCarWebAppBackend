@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using eCommerceStarterCode.Data;
 
 namespace eCommerceStarterCode.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20211028192510_SellerPhotoCorrection")]
+    partial class SellerPhotoCorrection
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -48,15 +50,15 @@ namespace eCommerceStarterCode.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "2a3578de-1791-4838-85bf-b99a3b064846",
-                            ConcurrencyStamp = "b0fa20ce-f2f6-4f7b-8d97-b60e22e34a50",
+                            Id = "76b43aa9-efaf-41f8-b903-61f776829e05",
+                            ConcurrencyStamp = "c5bbd158-61fb-43ec-b665-87be091e108e",
                             Name = "User",
                             NormalizedName = "USER"
                         },
                         new
                         {
-                            Id = "352f16a2-7c6d-43a1-b0c6-41dc07656adb",
-                            ConcurrencyStamp = "057ca5af-58c2-4784-bffd-99add05b6666",
+                            Id = "efd76f48-cb37-4b33-9ae8-4681aa54c5d9",
+                            ConcurrencyStamp = "e6ed5008-ea4e-4823-a412-1765adf2d8cf",
                             Name = "Admin",
                             NormalizedName = "ADMIN"
                         });
@@ -427,8 +429,14 @@ namespace eCommerceStarterCode.Migrations
                     b.Property<int>("CarId")
                         .HasColumnType("int");
 
-                    b.Property<string>("ImageResponseData")
+                    b.Property<byte[]>("ImageData")
+                        .HasColumnType("varbinary(max)");
+
+                    b.Property<string>("Name")
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("Size")
+                        .HasColumnType("int");
 
                     b.HasKey("Id");
 

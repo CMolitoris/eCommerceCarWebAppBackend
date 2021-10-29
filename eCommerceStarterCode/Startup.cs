@@ -8,6 +8,8 @@ using eCommerceStarterCode.ActionFilters;
 using eCommerceStarterCode.Contracts;
 using eCommerceStarterCode.Extensions;
 using eCommerceStarterCode.Managers;
+using System.IO;
+using Microsoft.Extensions.FileProviders;
 
 namespace eCommerceStarterCode
 {
@@ -41,6 +43,12 @@ namespace eCommerceStarterCode
             {
                 app.UseDeveloperExceptionPage();
             }
+
+            app.UseStaticFiles(new StaticFileOptions
+            {
+                FileProvider = new PhysicalFileProvider(Path.Combine(env.ContentRootPath, "Images")),
+                RequestPath = "/Images"
+            });
 
             app.UseHttpsRedirection();
             app.UseStaticFiles();

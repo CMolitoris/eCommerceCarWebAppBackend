@@ -62,6 +62,7 @@ namespace eCommerceStarterCode.Controllers
             user.UserName = userDetails.UserName;
             user.FirstName = userDetails.FirstName;
             user.LastName = userDetails.LastName;
+            user.Email = userDetails.Email;
             user.StreetAddress = userDetails.StreetAddress;
             user.City = userDetails.City;
             user.State = userDetails.State;

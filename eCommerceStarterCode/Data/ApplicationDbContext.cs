@@ -18,6 +18,7 @@ namespace eCommerceStarterCode.Data
         public DbSet<Order> Orders { get; set; }
         public DbSet<ShoppingCart> ShoppingCarts { get; set; }
         public DbSet<SellerConnection> SellerConnections { get; set; }
+        public DbSet<SellerPhoto> SellerPhotos { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
