@@ -9,6 +9,7 @@ namespace eCommerceStarterCode.Models
         public int Id { get; set; }
         public double RatingScore { get; set; }
         public string Message { get; set; }
+        public string UserName { get; set; }
 
         [ForeignKey("Car")]
         public int CarId { get; set; }
