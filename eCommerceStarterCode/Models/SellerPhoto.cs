@@ -16,5 +16,9 @@ namespace eCommerceStarterCode.Models
         [ForeignKey("Car")]
         public int CarId { get; set; }
         public Car Car { get; set; }
+
+        [ForeignKey("User")]
+        public string UserId { get; set; }
+        public User User { get; set; }
     }
 }

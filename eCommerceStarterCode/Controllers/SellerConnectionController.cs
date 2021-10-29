@@ -3,6 +3,7 @@ using eCommerceStarterCode.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -29,15 +30,15 @@ namespace eCommerceStarterCode.Controllers
             return Ok(shoppingCarts);
         }
 
-        //Get ratings for car
+        //Get sellerConnections for car
         [HttpGet("{userId}")]
         public IActionResult GetUserConnection(string userId)
         {
-            var connections = _context.SellerConnections.Where(r => r.UserId == userId).ToList();
+            var connections = _context.SellerConnections.Where(r => r.UserId == userId).Include(r => r.Car).Select(r => r.Car).ToArray();
             return Ok(connections);
         }
 
-        //POST Rating
+        //POST sellerConnection
         [HttpPost]
         public IActionResult Post([FromBody] SellerConnection sellerConnection)
         {

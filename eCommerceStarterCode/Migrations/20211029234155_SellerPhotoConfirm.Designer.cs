@@ -10,7 +10,7 @@ using eCommerceStarterCode.Data;
 namespace eCommerceStarterCode.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20211029195054_SellerPhotoConfirm")]
+    [Migration("20211029234155_SellerPhotoConfirm")]
     partial class SellerPhotoConfirm
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -50,15 +50,15 @@ namespace eCommerceStarterCode.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "e93574d0-7209-4b7b-94f2-fd6016e4e2bc",
-                            ConcurrencyStamp = "852d15fc-02e2-4ed0-829c-097435656123",
+                            Id = "c3ff77ad-e9ac-4b98-98d3-7bcf06ded108",
+                            ConcurrencyStamp = "7b0827f4-9048-42ee-be22-52896045dc8a",
                             Name = "User",
                             NormalizedName = "USER"
                         },
                         new
                         {
-                            Id = "a1840d30-44e3-4fcb-ad22-c2ba5007f7cb",
-                            ConcurrencyStamp = "d57fc234-56eb-4d24-85c8-89469a760130",
+                            Id = "7fd0ce77-9ea7-4b7e-9a48-b8c4695cc589",
+                            ConcurrencyStamp = "6b7bc26e-72ad-4c1e-b1f7-f9c7f7fabec5",
                             Name = "Admin",
                             NormalizedName = "ADMIN"
                         });
@@ -394,6 +394,9 @@ namespace eCommerceStarterCode.Migrations
                     b.Property<double>("RatingScore")
                         .HasColumnType("float");
 
+                    b.Property<string>("UserName")
+                        .HasColumnType("nvarchar(max)");
+
                     b.HasKey("Id");
 
                     b.HasIndex("CarId");
@@ -432,9 +435,14 @@ namespace eCommerceStarterCode.Migrations
                     b.Property<string>("ImageResponseData")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("UserId")
+                        .HasColumnType("nvarchar(450)");
+
                     b.HasKey("Id");
 
                     b.HasIndex("CarId");
+
+                    b.HasIndex("UserId");
 
                     b.ToTable("SellerPhotos");
                 });
@@ -635,7 +643,13 @@ namespace eCommerceStarterCode.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
+                    b.HasOne("eCommerceStarterCode.Models.User", "User")
+                        .WithMany()
+                        .HasForeignKey("UserId");
+
                     b.Navigation("Car");
+
+                    b.Navigation("User");
                 });
 
             modelBuilder.Entity("eCommerceStarterCode.Models.ShoppingCart", b =>

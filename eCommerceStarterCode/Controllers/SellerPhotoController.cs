@@ -26,15 +26,15 @@ namespace eCommerceStarterCode.Controllers
         [HttpGet("all/")]
         public IActionResult GetAllPhotos()
         {
-            var sellerPhotos = _context.SellerPhotos;
+            var sellerPhotos = _context.SellerPhotos.Include(sf => sf.Car).ToList();
             return Ok(sellerPhotos);
         }
 
         //Get photos for car
-        [HttpGet("{carId}")]
-        public IActionResult GetUserConnection(int carId)
+        [HttpGet("{userId}")]
+        public IActionResult GetUserConnection(string userId)
         {
-            var photos = _context.SellerPhotos.Where(c => c.CarId == carId).ToList();
+            var photos = _context.SellerPhotos.Where(c => c.UserId == userId).Include(c => c.Car).ToList();
             return Ok(photos);
         }
 

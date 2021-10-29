@@ -48,25 +48,15 @@ namespace eCommerceStarterCode.Migrations
                     b.HasData(
                         new
                         {
-<<<<<<< HEAD
-                            Id = "e93574d0-7209-4b7b-94f2-fd6016e4e2bc",
-                            ConcurrencyStamp = "852d15fc-02e2-4ed0-829c-097435656123",
-=======
-                            Id = "46f6c47e-fbc5-46f2-b4a7-49b448c20d58",
-                            ConcurrencyStamp = "20966f80-e055-4513-908a-7084ea7e3ac9",
->>>>>>> 4789b775ddfc11211620f0dba78a9d77686a0c26
+                            Id = "c3ff77ad-e9ac-4b98-98d3-7bcf06ded108",
+                            ConcurrencyStamp = "7b0827f4-9048-42ee-be22-52896045dc8a",
                             Name = "User",
                             NormalizedName = "USER"
                         },
                         new
                         {
-<<<<<<< HEAD
-                            Id = "a1840d30-44e3-4fcb-ad22-c2ba5007f7cb",
-                            ConcurrencyStamp = "d57fc234-56eb-4d24-85c8-89469a760130",
-=======
-                            Id = "96ea4171-05f7-4923-a06f-b5baa3f8e189",
-                            ConcurrencyStamp = "7a555bf2-8445-47b9-856b-8a9cd06650e9",
->>>>>>> 4789b775ddfc11211620f0dba78a9d77686a0c26
+                            Id = "7fd0ce77-9ea7-4b7e-9a48-b8c4695cc589",
+                            ConcurrencyStamp = "6b7bc26e-72ad-4c1e-b1f7-f9c7f7fabec5",
                             Name = "Admin",
                             NormalizedName = "ADMIN"
                         });
@@ -443,9 +433,14 @@ namespace eCommerceStarterCode.Migrations
                     b.Property<string>("ImageResponseData")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("UserId")
+                        .HasColumnType("nvarchar(450)");
+
                     b.HasKey("Id");
 
                     b.HasIndex("CarId");
+
+                    b.HasIndex("UserId");
 
                     b.ToTable("SellerPhotos");
                 });
@@ -646,7 +641,13 @@ namespace eCommerceStarterCode.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
+                    b.HasOne("eCommerceStarterCode.Models.User", "User")
+                        .WithMany()
+                        .HasForeignKey("UserId");
+
                     b.Navigation("Car");
+
+                    b.Navigation("User");
                 });
 
             modelBuilder.Entity("eCommerceStarterCode.Models.ShoppingCart", b =>

@@ -44,10 +44,7 @@ namespace eCommerceStarterCode
                 app.UseDeveloperExceptionPage();
             }
 
-<<<<<<< HEAD
 
-=======
->>>>>>> 4789b775ddfc11211620f0dba78a9d77686a0c26
             app.UseHttpsRedirection();
             app.UseStaticFiles();
             app.UseCors("CorsPolicy");
