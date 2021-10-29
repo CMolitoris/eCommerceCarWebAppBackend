@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using eCommerceStarterCode.Data;
 
 namespace eCommerceStarterCode.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20211029182941_RatingUserName")]
+    partial class RatingUserName
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -48,25 +50,15 @@ namespace eCommerceStarterCode.Migrations
                     b.HasData(
                         new
                         {
-<<<<<<< HEAD
-                            Id = "e93574d0-7209-4b7b-94f2-fd6016e4e2bc",
-                            ConcurrencyStamp = "852d15fc-02e2-4ed0-829c-097435656123",
-=======
                             Id = "46f6c47e-fbc5-46f2-b4a7-49b448c20d58",
                             ConcurrencyStamp = "20966f80-e055-4513-908a-7084ea7e3ac9",
->>>>>>> 4789b775ddfc11211620f0dba78a9d77686a0c26
                             Name = "User",
                             NormalizedName = "USER"
                         },
                         new
                         {
-<<<<<<< HEAD
-                            Id = "a1840d30-44e3-4fcb-ad22-c2ba5007f7cb",
-                            ConcurrencyStamp = "d57fc234-56eb-4d24-85c8-89469a760130",
-=======
                             Id = "96ea4171-05f7-4923-a06f-b5baa3f8e189",
                             ConcurrencyStamp = "7a555bf2-8445-47b9-856b-8a9cd06650e9",
->>>>>>> 4789b775ddfc11211620f0dba78a9d77686a0c26
                             Name = "Admin",
                             NormalizedName = "ADMIN"
                         });
