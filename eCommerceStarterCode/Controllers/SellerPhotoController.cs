@@ -47,10 +47,10 @@ namespace eCommerceStarterCode.Controllers
             return StatusCode(201, sellerPhoto);
         }
 
-        [HttpDelete("{photoId}/{carId}")]
-        public IActionResult DeleteConnection(int photoId, int carId)
+        [HttpDelete("{photoId}")]
+        public IActionResult DeleteConnection(int photoId)
         {
-            var photoToDelete = _context.SellerPhotos.Where(ptd => ptd.CarId == carId && ptd.Id == photoId).SingleOrDefault();
+            var photoToDelete = _context.SellerPhotos.Where(ptd =>  ptd.Id == photoId).SingleOrDefault();
             _context.Remove(photoToDelete);
             _context.SaveChanges();
             return Ok(photoToDelete);
