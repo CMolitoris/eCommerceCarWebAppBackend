@@ -38,6 +38,14 @@ namespace eCommerceStarterCode.Controllers
             return StatusCode(201, newCar);
         }
 
+        [HttpGet("all-models")]
+        public IActionResult GetCarModels()
+        {
+            var models = _context.Cars.Select(c => c.Make).Distinct().ToList();
+
+            return Ok(models);
+        }
+
         // GET api/car/{carId}
         [HttpGet("{carId}")]
         public IActionResult GetIdOrders(int carId)
