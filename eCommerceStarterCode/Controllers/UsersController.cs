@@ -30,7 +30,7 @@ namespace eCommerceStarterCode.Controllers
         }
 
         //Get current user
-        [HttpGet("{userId}")]
+        [HttpGet("{userId}"), Authorize]
         public IActionResult GetCurrentUser(string userId)
         {
             var currentUser = _context.Users.Where(u => u.Id == userId).SingleOrDefault();
